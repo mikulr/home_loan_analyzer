@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Loan Application Results</title>
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"
+    integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ <!-- Internal style sheet to set colors and formatting of certain aspects-->
+ <link rel="stylesheet" href="static/style.css">
+  <script type="text/javascript"> var data = JSON.parse({{ stateData| tojson}});</script>
+  <script type="text/javascript"> var homeState = {{ homeState| tojson }}</script>
+</head>
+
+<body>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center border-secondary rounded"
+        style="background-color:#f9f9f9;border-color:#d3d3d3;border: width 10px;">
+        <h2>See how you compare to the other applicants in {{ homeState.openingState }}</h2>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+    <div class="col-md-9 jumbotron text-center border-secondary rounded"
+      style="background-color:#f9f9f9;border-color:#d3d3d3;border: width 10px;">
+      <h3>{{result.prediction}}</h3>
+      <hr>
+      <p>The probability of this result is:</p>
+      <h5>{{result.probability}} </h5>
+    </div>
+
+      <div class="col-md-3">
+        <div class="well">
+          <h5>View Another States Data</h5>
+          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div id="bar"></div>
+      </div>
+      <div class="col ">
+        <div id="bar2"></div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col">
+        <div id="pie1"></div>
+      </div>
+      <div class="col">
+        <div id="pie2"></div>
+      </div>
+      <div class="col">
+        <div id="pie3"></div>
+      </div>
+    </div>
+
+
+
+    <!-- <script src="https://d3js.org/d3.v7.min.js"></script> -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="../static/js/graphs.js"></script>
+
+</body>
+
+</html>
